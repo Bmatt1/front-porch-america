@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "The State of American Values",
+    "description": "A deep dive into what Americans truly care about in 2026.",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/@frontporchamerica",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "title": "Faith and Freedom",
+    "description": "Exploring the intersection of religious liberty and American ideals.",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/@frontporchamerica",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "title": "Small Town Stories",
+    "description": "Real stories from small-town America that inspire and unite us.",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/@frontporchamerica",
+    "order": 3
+  },
+  {
+    "id": 4,
+    "title": "Building Stronger Families",
+    "description": "Practical wisdom for raising the next generation with purpose.",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/@frontporchamerica",
+    "order": 4
+  }
+]

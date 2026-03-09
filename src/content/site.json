@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "showName": "Rickk White's Front Porch America",
+    "tagline": "Real conversations from the American front porch",
+    "description": "Join Rickk White for honest discussions about faith, family, freedom, and the things that matter most to everyday Americans.",
+    "youtubeUrl": "https://www.youtube.com/@frontporchamerica",
+    "emailSignupUrl": "#newsletter"
+  },
+  "about": {
+    "title": "About the Show",
+    "text": "Front Porch America brings you unfiltered conversations from the heart of America. Rickk White sits down with guests to discuss the issues, stories, and values that define us as a nation—one front porch at a time.",
+    "comingSoon": "Full About page coming soon"
+  },
+  "community": {
+    "title": "Join the Front Porch",
+    "text": "Get weekly updates, behind-the-scenes content, and exclusive invitations to live events. Be part of the Front Porch America community.",
+    "ctaText": "Join the email list",
+    "comingSoon": "Richer community hub coming soon"
+  }
+}
