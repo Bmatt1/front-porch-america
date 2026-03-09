@@ -1,34 +1,29 @@
 [
   {
     "id": 1,
-    "title": "The State of American Values",
-    "description": "A deep dive into what Americans truly care about in 2026.",
+    "title": "The Beach Of Lies: The Heather Teague Case",
+    "description": "We sit down with Sarah Teague, the mother of Heather Teague, who vanished in 1995 from a Kentucky beach. For nearly three decades, her disappearance has been a chilling mystery. Now, for the first time, Sarah shares never-before-seen information that she believes could finally lead to answers.",
     "platform": "YouTube",
-    "url": "https://www.youtube.com/@frontporchamerica",
+    "url": "https://youtu.be/Aom_t-NZ1cE",
+    "videoId": "Aom_t-NZ1cE",
     "order": 1
   },
   {
     "id": 2,
-    "title": "Faith and Freedom",
-    "description": "Exploring the intersection of religious liberty and American ideals.",
+    "title": "Beyond the Scales: Amanda Halterman's Journey",
+    "description": "We sit down with Amanda Halterman, a key figure from TLC's hit show '1000-lb Sisters.' Beyond the familiar family dynamics and weight loss journeys, Amanda opens up about her personal experiences and her own path to self-discovery.",
     "platform": "YouTube",
-    "url": "https://www.youtube.com/@frontporchamerica",
+    "url": "https://youtu.be/TzCcQpQgQko",
+    "videoId": "TzCcQpQgQko",
     "order": 2
   },
   {
     "id": 3,
-    "title": "Small Town Stories",
-    "description": "Real stories from small-town America that inspire and unite us.",
+    "title": "What Happened to My Dad?",
+    "description": "Raynel talks about information he is receiving regarding the untimely passing of his dad. He is asking if anyone knows anything to please reach out to him or law enforcement. A powerful episode about seeking justice and answers.",
     "platform": "YouTube",
-    "url": "https://www.youtube.com/@frontporchamerica",
+    "url": "https://youtu.be/aueAWhlh6qU",
+    "videoId": "aueAWhlh6qU",
     "order": 3
-  },
-  {
-    "id": 4,
-    "title": "Building Stronger Families",
-    "description": "Practical wisdom for raising the next generation with purpose.",
-    "platform": "YouTube",
-    "url": "https://www.youtube.com/@frontporchamerica",
-    "order": 4
   }
 ]

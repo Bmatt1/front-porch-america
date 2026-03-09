@@ -154,12 +154,21 @@ export default function Footer() {
           >
             &copy; {year} Front Porch America. All rights reserved.
           </p>
-          <p
-            className="font-body text-xs"
+          <a
+            href="https://connectinfinitely.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-xs transition-colors duration-200"
             style={{ color: 'rgba(245,245,220,0.2)' }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLAnchorElement).style.color = 'var(--color-cream)';
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLAnchorElement).style.color = 'rgba(245,245,220,0.2)';
+            }}
           >
-            Designed by Connect Infinitely
-          </p>
+            Built by Infinite Horizons Solutions
+          </a>
         </div>
       </div>
     </footer>

@@ -12,6 +12,7 @@ interface Episode {
   description: string;
   platform: string;
   url: string;
+  videoId?: string;
   order: number;
 }
 
@@ -116,41 +117,69 @@ export default function Episodes({ episodes }: { episodes: Episode[] }) {
                 href={ep.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="episode-card group flex items-start gap-5"
+                className="episode-card group flex items-start gap-5 p-4 rounded-xl transition-all duration-300"
+                style={{
+                  background: 'rgba(245,245,220,0.03)',
+                  border: '1px solid rgba(245,245,220,0.06)',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(196,30,58,0.3)';
+                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(245,245,220,0.05)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(245,245,220,0.06)';
+                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(245,245,220,0.03)';
+                }}
               >
-                {/* Episode number */}
-                <span
-                  className="flex-shrink-0 font-display text-4xl font-bold leading-none"
-                  style={{ color: 'rgba(196,30,58,0.35)' }}
-                >
-                  {String(ep.order).padStart(2, '0')}
-                </span>
+                {/* YouTube Thumbnail */}
+                {ep.videoId ? (
+                  <div className="flex-shrink-0 w-28 h-20 rounded-lg overflow-hidden relative">
+                    <img
+                      src={`https://img.youtube.com/vi/${ep.videoId}/mqdefault.jpg`}
+                      alt={ep.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    {/* Play overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-all duration-300">
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                        style={{ background: 'rgba(196,30,58,0.9)' }}
+                      >
+                        <svg width="10" height="10" viewBox="0 0 12 12" fill="#f5f5dc" style={{ marginLeft: '1px' }}>
+                          <path d="M2 1.5L10 6L2 10.5V1.5Z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <span
+                    className="flex-shrink-0 font-display text-4xl font-bold leading-none"
+                    style={{ color: 'rgba(196,30,58,0.35)' }}
+                  >
+                    {String(ep.order).padStart(2, '0')}
+                  </span>
+                )}
 
                 <div className="flex-1 min-w-0">
+                  <span
+                    className="font-body text-[0.65rem] uppercase font-semibold"
+                    style={{ color: 'var(--color-red)', letterSpacing: '0.15em' }}
+                  >
+                    EP {String(ep.order).padStart(2, '0')}
+                  </span>
                   <h3
-                    className="font-display text-lg font-bold leading-tight mb-1 group-hover:text-glow"
+                    className="font-display text-base font-bold leading-tight mb-1 mt-0.5 transition-colors duration-300"
                     style={{ color: 'var(--color-cream)' }}
                   >
                     {ep.title}
                   </h3>
                   <p
-                    className="text-sm font-body line-clamp-2"
-                    style={{ color: 'rgba(245,245,220,0.5)', lineHeight: 1.6 }}
+                    className="text-xs font-body line-clamp-2"
+                    style={{ color: 'rgba(245,245,220,0.45)', lineHeight: 1.6 }}
                   >
                     {ep.description}
                   </p>
-                </div>
-
-                {/* Play icon */}
-                <div
-                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:border-porch-red"
-                  style={{
-                    borderColor: 'rgba(245,245,220,0.15)',
-                  }}
-                >
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style={{ color: 'var(--color-cream)', marginLeft: '1px' }}>
-                    <path d="M2 1.5L10 6L2 10.5V1.5Z" />
-                  </svg>
                 </div>
               </a>
             ))}
