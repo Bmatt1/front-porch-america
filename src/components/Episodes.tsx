@@ -41,13 +41,22 @@ export default function Episodes({ episodes }: { episodes: Episode[] }) {
         y: 40,
         opacity: 0,
         duration: 0.7,
-        stagger: 0.12,
+        stagger: 0.15,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.episodes-list',
-          start: 'top 80%',
+          start: 'top 95%',
+          toggleActions: 'play none none none',
         },
       });
+
+      // Ensure cards are visible after animation completes (fallback)
+      setTimeout(() => {
+        document.querySelectorAll('.episode-card').forEach((card) => {
+          (card as HTMLElement).style.opacity = '1';
+          (card as HTMLElement).style.transform = 'none';
+        });
+      }, 2500);
     }, sectionRef);
 
     return () => ctx.revert();
