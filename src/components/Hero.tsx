@@ -44,8 +44,8 @@ export default function Hero({ content }: { content: HeroContent }) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
-          alt="American home at dusk"
+          src="/hero-bg.webp"
+          alt="Front Porch America podcast banner"
           fill
           priority
           className="object-cover"
@@ -72,6 +72,18 @@ export default function Hero({ content }: { content: HeroContent }) {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 w-full pt-28 pb-20">
         <div className="max-w-3xl">
+          {/* Logo */}
+          <div className="hero-eyebrow mb-6">
+            <Image
+              src="/logo.webp"
+              alt="Front Porch America Podcast logo"
+              width={80}
+              height={80}
+              className="rounded-full"
+              style={{ filter: 'invert(1)' }}
+            />
+          </div>
+
           {/* Eyebrow */}
           <p
             className="hero-eyebrow mb-6 font-body uppercase"

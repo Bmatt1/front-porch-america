@@ -50,7 +50,7 @@ export default function Navbar() {
             style={{ borderColor: 'rgba(196,30,58,0.5)' }}
           >
             <Image
-              src="/logo-temp.jpg"
+              src="/logo.webp"
               alt="Front Porch America logo"
               width={36}
               height={36}

@@ -76,7 +76,7 @@ export default function About({ content }: { content: AboutContent }) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80"
+          src="/hero-bg.webp"
           alt="Golden American landscape at sunset"
           fill
           className="object-cover"
