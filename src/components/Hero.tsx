@@ -23,7 +23,8 @@ export default function Hero({ content }: { content: HeroContent }) {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.7, delay: 0.2 })
+      tl.from('.hero-logo', { scale: 0.8, opacity: 0, duration: 0.6, delay: 0.2 })
+        .from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.7 }, '-=0.2')
         .from('.hero-title-1', { y: 60, opacity: 0, duration: 1.1 }, '-=0.3')
         .from('.hero-title-2', { y: 60, opacity: 0, duration: 1.1 }, '-=0.8')
         .from('.hero-tagline', { y: 20, opacity: 0, duration: 0.7 }, '-=0.5')
@@ -51,13 +52,9 @@ export default function Hero({ content }: { content: HeroContent }) {
           className="object-cover"
           sizes="100vw"
         />
-        {/* Left-heavy dark overlay for text legibility */}
+        {/* Dark overlay — heavier on mobile for text legibility */}
         <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to right, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.70) 50%, rgba(0,0,0,0.35) 100%)',
-          }}
+          className="absolute inset-0 hero-overlay"
         />
         {/* Bottom vignette */}
         <div
@@ -70,16 +67,16 @@ export default function Hero({ content }: { content: HeroContent }) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 w-full pt-28 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 md:px-16 w-full pt-24 sm:pt-28 pb-16 sm:pb-20">
         <div className="max-w-3xl">
           {/* Logo */}
-          <div className="hero-eyebrow mb-6">
+          <div className="hero-logo mb-6">
             <Image
               src="/logo.webp"
               alt="Front Porch America Podcast logo"
               width={80}
               height={80}
-              className="rounded-full"
+              className="rounded-full w-16 h-16 sm:w-20 sm:h-20"
               style={{ filter: 'invert(1)' }}
             />
           </div>

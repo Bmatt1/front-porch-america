@@ -43,6 +43,34 @@ body {
   position: relative;
 }
 
+/* ─── Hero Overlay (responsive) ──────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.80) 0%,
+    rgba(0, 0, 0, 0.65) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.90) 0%,
+      rgba(0, 0, 0, 0.70) 50%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  }
+}
+
+/* ─── Headline responsive ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .headline-cinematic {
+    font-size: clamp(2.2rem, 10vw, 3.5rem) !important;
+  }
+}
+
 /* ─── Film Grain Overlay ─────────────────────────────────────────────────── */
 .grain {
   position: relative;
