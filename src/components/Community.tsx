@@ -59,22 +59,17 @@ export default function Community({ content }: { content: CommunityContent }) {
     setLoading(true);
     setError('');
     try {
-      const formData = new FormData();
-      formData.append('email_address', email);
-      formData.append('form_id', '9211067');
-      const res = await fetch(
-        'https://app.kit.com/forms/9211067/subscriptions',
-        {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: formData,
-        }
-      );
-      if (res.ok) {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
         setSubmitted(true);
         setEmail('');
       } else {
-        setError('Something went wrong. Please try again.');
+        setError(data.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setError('Something went wrong. Please try again.');
