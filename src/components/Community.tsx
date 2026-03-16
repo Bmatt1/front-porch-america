@@ -1,29 +1,24 @@
 'use client';
-
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
-
 interface CommunityContent {
   title: string;
   text: string;
   ctaText: string;
 }
-
 export default function Community({ content }: { content: CommunityContent }) {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const sectionRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
     if (prefersReducedMotion) return;
-
     const ctx = gsap.context(() => {
       gsap.from('.community-headline', {
         y: 60,
@@ -35,7 +30,6 @@ export default function Community({ content }: { content: CommunityContent }) {
           start: 'top 85%',
         },
       });
-
       gsap.from('.community-body', {
         y: 30,
         opacity: 0,
@@ -46,7 +40,6 @@ export default function Community({ content }: { content: CommunityContent }) {
           start: 'top 85%',
         },
       });
-
       gsap.from('.community-form', {
         y: 20,
         opacity: 0,
@@ -58,20 +51,37 @@ export default function Community({ content }: { content: CommunityContent }) {
         },
       });
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setLoading(true);
-    setTimeout(() => {
+    setError('');
+    try {
+      const formData = new FormData();
+      formData.append('email_address', email);
+      formData.append('form_id', '9211067');
+      const res = await fetch(
+        'https://app.kit.com/forms/9211067/subscriptions',
+        {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData,
+        }
+      );
+      if (res.ok) {
+        setSubmitted(true);
+        setEmail('');
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 900);
+    }
   };
-
   return (
     <section
       id="community"
@@ -88,7 +98,6 @@ export default function Community({ content }: { content: CommunityContent }) {
           filter: 'blur(80px)',
         }}
       />
-
       <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-16 w-full py-20">
         <div className="max-w-2xl">
           {/* Eyebrow */}
@@ -103,16 +112,13 @@ export default function Community({ content }: { content: CommunityContent }) {
           >
             community
           </p>
-
           {/* Headline */}
           <h2 className="community-headline headline-cinematic">
             join the
             <br />
             porch.
           </h2>
-
           <div className="divider-red mt-6 mb-8" />
-
           {/* Body */}
           <p
             className="community-body font-body text-base md:text-lg"
@@ -124,7 +130,6 @@ export default function Community({ content }: { content: CommunityContent }) {
           >
             {content.text}
           </p>
-
           {/* Social proof */}
           <p
             className="community-body mt-4 font-body text-sm"
@@ -132,7 +137,6 @@ export default function Community({ content }: { content: CommunityContent }) {
           >
             1,000+ Americans already on the porch.
           </p>
-
           {/* Form */}
           <div className="community-form mt-10" id="newsletter">
             {submitted ? (
@@ -153,7 +157,7 @@ export default function Community({ content }: { content: CommunityContent }) {
                   className="font-body text-sm"
                   style={{ color: 'rgba(245,245,220,0.6)' }}
                 >
-                  You&apos;re on the list. We&apos;ll be in touch.
+                  You're on the list. We'll be in touch.
                 </p>
               </div>
             ) : (
@@ -186,6 +190,14 @@ export default function Community({ content }: { content: CommunityContent }) {
                   {loading ? 'Joining...' : content.ctaText}
                 </button>
               </form>
+            )}
+            {error && (
+              <p
+                className="mt-3 font-body text-sm"
+                style={{ color: 'rgba(196,30,58,0.9)' }}
+              >
+                {error}
+              </p>
             )}
           </div>
         </div>
