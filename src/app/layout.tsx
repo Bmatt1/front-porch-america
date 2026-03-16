@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -110,7 +111,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased grain">{children}</body>
+      <body className="antialiased grain">{children}
+        <Analytics />
+        </body>
     </html>
   );
 }
